@@ -1,14 +1,21 @@
-\documentclass{article}
+\documentclass{report}
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\begin{document}
+\newtheorem*{thm}{Theorem}
 
-Theorem: For any $n$ positive numbers $a_1, a_2, ... a_n$: 
+\begin{document}
+\title{MAT 180 Term Paper}
+\author{Darya Chumakova and Satoshi Scott Iwako}
+\maketitle
+
+\begin{thm}
+For any $n$ positive numbers $a_1, a_2, ... a_n$: 
 \begin{align*}
 \frac{n}{1/a_1 + 1/a_2 + ... + 1/a_n} \leq \sqrt[n]{a_1 a_2 a_3 ... a_n} \leq \frac{a_1 + a_2 + ... + a_n}{n}
 \end{align*}
 Where the equality holds iff $a_1 = a_2 = ... = a_n$.
+\end{thm}
 
 \begin{proof}
 We will first prove:
@@ -16,9 +23,9 @@ We will first prove:
 \sqrt[n]{a_1 a_2 a_3 ... a_n} \leq \frac{a_1 + a_2 + ... + a_n}{n}
 \end{align*}
 
-Forward Induction: \\
-Base Case: We wish to show the inequality holds for n = 2 i.e. $\sqrt{ab} \leq \frac{a+b}{2}$. 
-
+\begin{flushleft}
+\textit{Forward Induction:} (To show statement holds for $n = 2^k$ where $k = 1, 2, 3...$) \\
+\textbf{Base Case:} We wish to show the inequality holds for n = 2 i.e. $$\sqrt{ab} \leq \frac{a+b}{2}$$
 Suppose $a$ and $b$ are positive numbers. Then $(a-b)^2 \geq 0$. From here it follows that:
 \begin{align*}
 (a-b)^2 \geq 0 &\iff a^2 - 2ab + b^2 \geq 0 \\
@@ -27,9 +34,12 @@ Suppose $a$ and $b$ are positive numbers. Then $(a-b)^2 \geq 0$. From here it fo
 			   &\iff (a+b) \geq 2\sqrt{ab} \\
 			   &\iff \frac{a+b}{2} \geq \sqrt{ab}
 \end{align*}
+Hence the inequality holds for $n=2$.\\
+\textbf{Inductive Step:} Suppose $$\sqrt[n]{a_1 a_2 a_3 ... a_n} \leq \frac{a_1 + a_2 + ... + a_n}{n} \qquad (1)$$ holds for $n = 2^k$. We wish to show the inequality holds for $n = 2^{k+1} = 2 \cdot 2^k = 2n$. Let:
+$$a_1 = \frac{b_1 + b_2}{2} \qquad a_2 = \frac{b_3 + b_4}{2} \qquad \ldots \qquad a_n = \frac{b_{2n-1} + b_{2n}}{2}$$
+where $b_1, b_2 ... b_{2n}$ are positive numbers. Next, we will substitute the above values into $(1)$. 
 
-
-
+\end{flushleft}
 \end{proof}
 
 \end{document}
