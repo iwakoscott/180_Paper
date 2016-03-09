@@ -2,13 +2,16 @@
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\newtheorem*{thm}{Theorem}
 \begin{document}
 
-Theorem: For any $n$ positive numbers $a_1, a_2, ... a_n$: 
+\begin{thm}
+For any $n$ positive numbers $a_1, a_2, ... a_n$: 
 \begin{align*}
 \frac{n}{1/a_1 + 1/a_2 + ... + 1/a_n} \leq \sqrt[n]{a_1 a_2 a_3 ... a_n} \leq \frac{a_1 + a_2 + ... + a_n}{n}
 \end{align*}
 Where the equality holds iff $a_1 = a_2 = ... = a_n$.
+\end{thm}
 
 \begin{proof}
 
