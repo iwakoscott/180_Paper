@@ -2,18 +2,33 @@
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\newtheorem*{thm}{Theorem}
 \begin{document}
 
-\begin{thm}
-For any $n$ positive numbers $a_1, a_2, ... a_n$: 
+Theorem: For any $n$ positive numbers $a_1, a_2, ... a_n$: 
 \begin{align*}
 \frac{n}{1/a_1 + 1/a_2 + ... + 1/a_n} \leq \sqrt[n]{a_1 a_2 a_3 ... a_n} \leq \frac{a_1 + a_2 + ... + a_n}{n}
 \end{align*}
 Where the equality holds iff $a_1 = a_2 = ... = a_n$.
-\end{thm}
 
 \begin{proof}
+We will first prove:
+\begin{align*}
+\sqrt[n]{a_1 a_2 a_3 ... a_n} \leq \frac{a_1 + a_2 + ... + a_n}{n}
+\end{align*}
+
+Forward Induction: \\
+Base Case: We wish to show the inequality holds for n = 2 i.e. $\sqrt{ab} \leq \frac{a+b}{2}$. 
+
+Suppose $a$ and $b$ are positive numbers. Then $(a-b)^2 \geq 0$. From here it follows that:
+\begin{align*}
+(a-b)^2 \geq 0 &\iff a^2 - 2ab + b^2 \geq 0 \\
+			   &\iff a^2 + 2ab + b^2 \geq 4ab \\
+			   &\iff (a+b)^2 \geq 4ab \\
+			   &\iff (a+b) \geq 2\sqrt{ab} \\
+			   &\iff \frac{a+b}{2} \geq \sqrt{ab}
+\end{align*}
+
+
 
 \end{proof}
 
