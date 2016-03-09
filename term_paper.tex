@@ -37,7 +37,14 @@ Suppose $a$ and $b$ are positive numbers. Then $(a-b)^2 \geq 0$. From here it fo
 Hence the inequality holds for $n=2$.\\
 \textbf{Inductive Step:} Suppose $$\sqrt[n]{a_1 a_2 a_3 ... a_n} \leq \frac{a_1 + a_2 + ... + a_n}{n} \qquad (1)$$ holds for $n = 2^k$. We wish to show the inequality holds for $n = 2^{k+1} = 2 \cdot 2^k = 2n$. Let:
 $$a_1 = \frac{b_1 + b_2}{2} \qquad a_2 = \frac{b_3 + b_4}{2} \qquad \ldots \qquad a_n = \frac{b_{2n-1} + b_{2n}}{2}$$
-where $b_1, b_2 ... b_{2n}$ are positive numbers. Next, we will substitute the above values into $(1)$. 
+where $b_1, b_2 ... b_{2n}$ are positive numbers. Next, we will substitute the above values into $(1)$. \\
+\begin{align*}
+\frac{ (\frac{b_1 + b_2}{2} + \frac{b_3 + b_4}{2} + \ldots + \frac{b_{2n-1} + b_{2n}}{2}) } {n} \geq \sqrt[n]{(\frac{b_1 + b_2}{2})\cdot(\frac{b_3 + b_4}{2})\cdots (\frac{b_{2n-1} + b_{2n}}{2})} &\iff
+\frac{b_1 + b_2 + b_3 + b_4 + \ldots + b_{2n-1} + b_{2n}}{2n}
+%\geq \sqrt[n]{(\frac{b_1 + b_2}{2})\cdot(\frac{b_3 + b_4}{2})\cdots (\frac{b_{2n-1} + b_{2n}}{2})}
+\end{align*}
+
+
 
 \end{flushleft}
 \end{proof}
