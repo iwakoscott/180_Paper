@@ -13,14 +13,21 @@
 \author{Darya Chumakova and Satoshi Scott Iwako}
 \maketitle
 
-% TODO: We need to add a paragraph at the beginning explaining the historical significance of both the geometric, harmonic, and arithmetic inequalities.
+\section*{Introduction}
+In this paper, we will first present an inductive proof of the Arithmetic-Geometric-Harmonic Mean Inequality and then discuss a recent application to approximating area under a parabola of degree $n \geq 2$ with $f(x) > 0$ for $-1 < x < 1$ and $f(-1) = f(0) = 0$. We chose this topic because we liked the creative ingenuity behind the forward and backward inductive argument. The algebraic proof of the Arithmetic-Geometric Mean Inequality with $n = 2$ was presented to us in Real Analysis, but we have never seen an argument for all $n \in \mathbb{N}$. We have never seen the Harmonic Mean and it's relationship to the other two means prior to this paper, so it was insightful to prove the full inequality and discover it's applications in modern research. 
+\section*{History}
+The first published record of the arithmetic-geometric mean inequality appeared in a memoir of Lagrange in 1784-1785. However Gauss also independently discovered the arithmetic-geometric mean inequality in 1791 at the age of 14 as evident in his journal and wrote a paper about it at the age of 22 or 23 (the paper was published by E.Schering in 1866 after Gauss's death). Gauss discovered the relationship by looking at the limit of the sequences $\{a_n\}_{n = 0}^{\infty}$ and $\{b_n\}_{n = 0}^{\infty}$ with $a_0 = a, b_0 = b$ and $a_{n+1} = (a_n + b_n)/2, b_{n+1} = (a_nb_n)^{1/2}$ and finding that $\lim_{n\to\infty} a_n = \lim_{n\to\infty} b_n$. Early applications of the inequality include computing elliptical and lemniscatic integrals. In particular, there is a close relationship between the perimeter of an ellipse (or length of an arc of an ellipse) and the arithmetic-geometric mean. One of the main motivations behind this was to approximate elliptical orbits of planets. John Landen applied the arithmetic-geometric mean to Landen's transformation (a mapping of of the parameters of an elliptic integral). Since it's discovery, the arithmetic-geometric mean has also been applied to fields such as approximation of $\pi$ and calculation of elementary functions. In the last decade, the inequality has been used to improve the speed of machine computation. The application we will present in this paper was published by Erdos and Gallai in 1938 in their paper \textit{On Polynomials With Only Real Roots}.
 
-The arithmetic and geometric inequality was originally founded by Lagrange but was independently discovered by young Gauss in 1791 at the age of 14.
+\section*{Geometric-Arithmetic-Harmonic Means}
+The geometric mean (GM), arithmetic mean (AM) and harmonic mean (HM) of a set $A = \{a_1, a_2 ... a_n\}$ is defined by:
+\begin{align*}
+ GM(A) &= \sqrt[n]{a_1a_2 \cdot a_n} \\
+ AM(A) &= \frac{a_1 + a_2 + ... + a_n}{n} \\
+ HM(A) &= \frac{n}{1/a_1 + 1/a_2 + ... + 1/a_n}
+\end{align*} 
 
+In the first part of the paper, we will prove the following inequality relating all three of the above means:
 
-% TODO: Describe who took part in what in this term paper/presentation
-
-\section*{Harmonic, Geometric, Arithmetic Mean Inequality}
 % Daryas Part
 \begin{thm}
 For any $n$ positive numbers $a_1, a_2, ... a_n$: 
@@ -122,8 +129,6 @@ The proof the geometric-harmonic inequality follows from the geometric-arithmeti
 \end{align*}
 \end{proof}
 
-
-
 \section*{Tangential Triangle Problem}
 Now what we would like to do is apply the harmonic, geometric, and arithmetic inequality to the tangetial triangle problem which was proposed in 1941 by Erdos and Gallai.
 \begin{thm}
@@ -147,10 +152,35 @@ And therefore,
 \begin{align*}
 y_0 = f'(1) \Big(\frac{f'(-1)+ f'(1)}{f'(1) - f'(-1)} - 1\Big) &\iff
 y_0 = f'(1) \Big(\frac{f'(1) + f'(-1) - (f'(1) - f'(-1))}{f'(1)-f'(-1)}\Big) \\&\iff
-y_0 = f'(1)\Big(\frac{2f'(-1)}{f'(1)-f'(-1)}\Big)
+y_0 = f'(1)\Big(\frac{2f'(-1)}{f'(1)-f'(-1)}\Big) =T.
 \end{align*}
 
 \begin{proof}
-We can rewrite $f(x) = (1-x^2) \prod_{i}(\alpha_i - x) \prod_{j}(\beta_j - x)$ since $f$ has real roots and $f(x) \neq 0$ for $x \in (-1, 1)$ for some $\alpha_{i}$ and $\beta_{j}$ that are both greater than or equal to 1.
+We can rewrite $f(x) = (1-x^2) \prod_{i}(\alpha_i - x) \prod_{j}(\beta_j + x)$ since $f$ has real roots and $f(x) > 0$ for $x \in (-1, 1)$ for some $\alpha_{i}$ and $\beta_{j}$ that are both greater than or equal to 1. Therefore,
+\begin{align*}
+A = \int_{-1}^{1} (1-x^2) \prod_{i}(\alpha_i - x) \prod_{j}(\beta_j + x) dx \qquad (\textbf{*})
+\end{align*}
+Since changing $x$ to $-x$ does not change the area of $A$ we can rewrite \textbf{*} as follows:
+\begin{align*}
+A &= \int_{-1}^{1} \frac{1}{2} \big[  (1-x^2) \prod_{i}(\alpha_i - x) \prod_{j}(\beta_j + x) + (1-x^2) \prod_{i}(\alpha_i + x) \prod_{j}(\beta_j - x)\big] dx \\&= \int_{-1}^{1} \frac{1}{2}(1-x^2) \big[ \underbrace{\prod_{i}(\alpha_i - x) \prod_{j}(\beta_j + x)}_{\rho} + \underbrace{\prod_{i}(\alpha_i + x) \prod_{j}(\beta_j - x)}_{\gamma} \big] dx \\&= \int_{-1}^{1} \frac{\rho + \gamma}{2}(1-x^2) dx \\&\geq \int_{-1}^{1} (1-x^2)\sqrt{\rho\gamma} dx \qquad (\text{Using the Geometric-Arithmetic Inequality}) \\&= \int_{-1}^{1} (1-x^2)\sqrt{\prod_{i}(\alpha_i - x) \prod_{j}(\beta_j + x)\prod_{i}(\alpha_i + x) \prod_{j}(\beta_j - x)} dx \\&= \int_{-1}^{1} (1-x^2) \sqrt{\prod_{i} (\alpha_i^2 - x^2)\prod_{j} (\beta_{j}^2 - x^2)} dx \\&\geq \int_{-1}^{1} (1-x^2) \sqrt{\prod_{i} (\alpha_i^2 - 1)\prod_{j} (\beta_{j}^2 - 1)} dx \\&= \frac{4}{3}\sqrt{\prod_{i}(\alpha_i^2 - 1)(\prod_{j} \beta_j^2-1)} dx
+\end{align*} 
+Now to compute $f'(-1)$ and $f'(1)$.
+\begin{align*}
+f'(x) &= -2x \prod_{i} (\alpha_i - x) \prod_{j} (\beta_j + x)
+\end{align*}
+Hence,
+\begin{align*}
+\left\{ \begin{array}{lr} f(-1) = 2\prod_{i}(\alpha_i + 1)\prod_{j}(\beta_j - 1) \\
+f(1) = -2\prod_{i}(\alpha_i - 1)\prod_{j}(\beta_j + 1)
+\end{array} \right.
+\end{align*}
+Therefore,
+\begin{align*}
+A &\geq \frac{4}{3}\big(\prod_{i}(\alpha_i^2 - 1)\prod_{j}(\beta_j^2 - 1)\big)^{1/2} \\&= \frac{4}{3} \big( -\frac{f'(-1)f'(1)}{4} \big)^{1/2} \\&= \frac{2}{3}\big(-f'(1)f'(-1)\big)^{1/2}.
+\end{align*}
+Ultimately,
+\begin{align*}
+A &\geq \frac{2}{3} \frac{2}{-\frac{1}{f'(1)} + \frac{1}{f'(-1)}} \qquad (\text{Harmonic-Geometric Inequality}) \\&= \frac{2}{3}\Big(2\frac{f'(-1)f'(1)}{f'(1)-f'(-1)}\Big) = \frac{2}{3}T.
+\end{align*}
 \end{proof}
 \end{document}
