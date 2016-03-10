@@ -13,14 +13,20 @@
 \author{Darya Chumakova and Satoshi Scott Iwako}
 \maketitle
 
-% TODO: We need to add a paragraph at the beginning explaining the historical significance of both the geometric, harmonic, and arithmetic inequalities.
+\section*{Introduction}
+In this paper, we will first present an inductive proof of the Arithmetic-Geometric-Harmonic Mean Inequality and then discuss a recent application to approximating area under a parabola of degree $n \geq 2$ with $f(x) > 0$ for $-1 < x < 1$ and $f(-1) = f(0) = 0$. We chose this topic because we liked the creative ingenuity behind the forward and backward inductive argument. The algebraic proof of the Arithmetic-Geometric Mean Inequality with $n = 2$ was presented to us in Real Analysis, but we have never seen an argument for all $n \in \mathbb{N}$. We have never seen the Harmonic Mean and it's relationship to the other two means prior to this paper, so it was insightful to prove the full inequality and discover it's applications in modern research. 
+\section*{History}
+The first published record of the arithmetic-geometric mean inequality appeared in a memoir of Lagrange in 1784-1785. However Gauss also independently discovered the arithmetic-geometric mean inequality in 1791 at the age of 14 as evident in his journal and wrote a paper about it at the age of 22 or 23 (the paper was published by E.Schering in 1866 after Gauss's death). Gauss discovered the relationship by looking at the limit of the sequences $\{a_n\}_{n = 0}^{\infty}$ and $\{b_n\}_{n = 0}^{\infty}$ with $a_0 = a, b_0 = b$ and $a_{n+1} = (a_n + b_n)/2, b_{n+1} = (a_nb_n)^{1/2}$ and finding that $\lim_{n\to\infty} a_n = \lim_{n\to\infty} b_n$. Early applications of the inequality include computing elliptical and lemniscatic integrals.
 
-The arithmetic and geometric inequality was originally founded by Lagrange but was independently discovered by young Gauss in 1791 at the age of 14.
+\section*{Geometric-Arithmetic-Harmonic Mean Inequality}
+The geometric mean (GM), arithmetic mean (AM) and harmonic mean (HM) of a set $A = \{a_1, a_2 ... a_n\}$ is defined by:
+\begin{align*}
+ GM(A) &= \sqrt[n]{a_1a_2 \cdot a_n} \\
+ AM(A) &= \frac{a_1 + a_2 + ... + a_n}{n} \\
+ HM(a) &= \frac{n}{1/a_1 + 1/a_2 + ... + 1/a_n}
+\end{align*} 
 
-
-% TODO: Describe who took part in what in this term paper/presentation
-
-\section*{Harmonic, Geometric, Arithmetic Mean Inequality}
+In the first part of the paper, we will prove the following inequality relating all three of the above means: 
 % Daryas Part
 \begin{thm}
 For any $n$ positive numbers $a_1, a_2, ... a_n$: 
@@ -48,15 +54,19 @@ Suppose $a$ and $b$ are positive numbers. Then $(a-b)^2 \geq 0$. From here it fo
 			   &\iff \frac{a+b}{2} \geq \sqrt{ab}
 \end{align*}
 Hence the inequality holds for $n=2$.\\
-\textbf{Inductive Step:} Suppose $$\sqrt[n]{a_1 a_2 a_3 ... a_n} \leq \frac{a_1 + a_2 + ... + a_n}{n} \qquad (1)$$ holds for $n = 2^k$. We wish to show the inequality holds for $n = 2^{k+1} = 2 \cdot 2^k = 2n$. Let:
+\textbf{Inductive Step:} Suppose $$\frac{a_1 + a_2 + ... + a_n}{n} \geq \sqrt[n]{a_1 a_2 a_3 ... a_n} \qquad (1)$$ holds for $n = 2^k$. We wish to show the inequality holds for $n = 2^{k+1} = 2 \cdot 2^k = 2n$. Let:
 $$a_1 = \frac{b_1 + b_2}{2} \qquad a_2 = \frac{b_3 + b_4}{2} \qquad \ldots \qquad a_n = \frac{b_{2n-1} + b_{2n}}{2}$$
 where $b_1, b_2 ... b_{2n}$ are positive numbers. Next, we will substitute the above values into $(1)$. 
 \begin{align*}
-\frac{ (\frac{b_1 + b_2}{2} + \frac{b_3 + b_4}{2} + \ldots + \frac{b_{2n-1} + b_{2n}}{2}) } {n} &\geq \sqrt[n]{(\frac{b_1 + b_2}{2})\cdot(\frac{b_3 + b_4}{2})\cdots (\frac{b_{2n-1} + b_{2n}}{2})} \\&\iff
-\frac{b_1 + b_2 + b_3 + b_4 + \ldots + b_{2n-1} + b_{2n}}{2n}
-%\geq \sqrt[n]{(\frac{b_1 + b_2}{2})\cdot(\frac{b_3 + b_4}{2})\cdots (\frac{b_{2n-1} + b_{2n}}{2})}
+\frac{ (\frac{b_1 + b_2}{2} + \frac{b_3 + b_4}{2} + \ldots + \frac{b_{2n-1} + b_{2n}}{2}) } {n} \geq \sqrt[n]{(\frac{b_1 + b_2}{2})\cdot(\frac{b_3 + b_4}{2})\cdots (\frac{b_{2n-1} + b_{2n}}{2})} &\iff \\
+\frac{b_1 + b_2 + b_3 + b_4 + \ldots + b_{2n-1} + b_{2n}}{2n} \geq \sqrt[n]{(\frac{b_1 + b_2}{2}) \cdot (\frac{b_3 + b_4}{2}) \cdots (\frac{b_{2n-1} + b_{2n}}{2})}
 \end{align*}
-
+Next we apply the $n=2$ inequality to each of the terms on the right hand side of the inequality to get the following:
+\begin{align*}
+\frac{b_1 + b_2 + b_3 + b_4 + \ldots + b_{2n-1} + b_{2n}}{2n} \geq \sqrt[n]{(\sqrt{b_1b_2} \cdot \sqrt{b_3b_4} \cdots \sqrt{b_{2n-1}b_{2n}}} &\iff \\
+\frac{b_1 + b_2 + b_3 + b_4 + \ldots + b_{2n-1} + b_{2n}}{2n} \geq \sqrt[2n]{b_1b_2b_3b_4 \cdots b_{2n-1}b_{2n}}
+\end{align*}
+Hence we have just shown the inequality holds for $2n$, which means it holds for any power of $2^k$, $k = 1,2,3...$. 
 \end{flushleft}
 \end{proof}
 
@@ -64,7 +74,7 @@ where $b_1, b_2 ... b_{2n}$ are positive numbers. Next, we will substitute the a
 \begin{flushleft}
 \textit{Backwards Induction}
 \begin{proof}
-Now that we have established that the geometric and arithmetic ineqality holds for $n = 2^k$ we need to use a non-standard backwards induction to show that the inequality holds for all $n \in \mathbb{N}$.
+Now that we have established that the geometric and arithmetic inequality holds for $n = 2^k$ we need to use a non-standard backwards induction to show that the inequality holds for all $n \in \mathbb{N}$.
 \newline
 \newline
 $\boxed{\text{Base Case}}$ What we want to do is to assume that the following works for $n = 2^k$ and then prove that it works for $n - 1$. We can assume that the inequality holds for $n = 4$ lets prove that the inequality holds for $n = 3$. $$\sqrt[4]{a_1a_2a_3a_4} \leq \frac{a_1 + a_2 + a_3 + a_4}{4}$$ We apply a special trick to the inductive hypothesis by relabeling some of the $a$'s as follows: Let $a_1 = b_1, a_2 = b_1, a_3 = b_3$. Now we get the following inequality: $$\sqrt[4]{b_1b_2b_3a_4} \leq\frac{b_1 + b_2 + b_3 + a_4}{4}$$ Now from here we want to find an $a_4$ such that,
@@ -102,39 +112,16 @@ b_1b_2\cdots b_{n-1} \leq \big(\frac{b_1 + b_2 + \ldots + b_{n-1}}{n-1}\big)^{n-
 And thus, achieving the desired result.
 \end{proof}
 \end{flushleft}
-
-\section*{Harmonic and Geometric Inequality}
-\begin{thm}
-For any $n$ positive numbers $a_1, a_2, ... a_n$: 
-\begin{align*}
-\frac{n}{\frac{1}{a_1} + \ldots + \frac{1}{a_n}} \leq \sqrt[n]{a_1 \cdots a_n}
-\end{align*}
-Where the equality holds iff $a_1 = a_2 = ... = a_n$.
-\end{thm}
-
-\begin{proof}
-The proof the geometric-harmonic inequality follows from the geometric-arithmetic inequality. Notice that if we look at the recipricol of all $a_i$, that is, let $a_i = 1/t_i$ for $i = 1, \ldots, n$. Using the geometric-arithmetic inequality:
-\begin{align*}
-\sqrt[n]{a_1 \cdots a_n} \leq \frac{a_1 + \ldots + a_n}{n} &\iff
-\sqrt[n]{\frac{1}{t_1} \cdots \frac{1}{t_n}} \leq \frac{\frac{1}{t_1} + \ldots + \frac{1}{t_n}}{n} \\&\iff 
-\frac{1}{\sqrt[n]{t_1\cdots t_n}} \leq \frac{\frac{1}{t_1} + \ldots + \frac{1}{t_n}}{n} \\&\iff
-\sqrt[n]{t_1 \cdots t_n} \geq \frac{n}{\frac{1}{t_1} + \ldots + \frac{1}{t_n}}
-\end{align*}
-\end{proof}
-
-
-
-\section*{Tangential Triangle Problem}
 Now what we would like to do is apply the harmonic, geometric, and arithmetic inequality to the tangetial triangle problem which was proposed in 1941 by Erdos and Gallai.
 \begin{thm}
 Let $f(x)$ be a real polynomial of degree $n\geq 2$ with only real roots, such that $f(x)>0$ for $-1<x<1$ and $f(-1) = f(1) = 0$. Then $$\frac{2}{3}T \leq A \leq \frac{2}{3}R,$$ and equality holds in both cases only for $n = 2$.
 \end{thm}
 \begin{figure}[H]
 \centering
-\frame{\includegraphics{tangential.PNG}}
+%\frame{\includegraphics{tangential.PNG}}
 \caption{Example figure for $f(x) = (1 - x^2) (2 - x) (2 + x)$ where $T$ is the area of the tangential triangle, $A$ is the area under $f$, $l_1$ and $l_2$ are the tangent lines at $x = \pm 1$.}
 \end{figure}
-\subsection*{Steps to Construct the Tangential Triangle}
+\section*{Steps to Construct the Tangential Triangle}
 To contruct the Tangential triangle we need to find the equation of the tangent line going through $x = \pm 1$ of $f$. We can do this by using some basic concepts from algebra. Using slope intercept form we get that:
 \begin{align*}
 \left\{ \begin{array}{lr} l_1 := y_1 = f'(-1)(x+1) \\ l_2 := y_2 = f'(1)(x-1).\end{array} \right.
