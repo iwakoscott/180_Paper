@@ -23,11 +23,10 @@ The geometric mean (GM), arithmetic mean (AM) and harmonic mean (HM) of a set $A
 \begin{align*}
  GM(A) &= \sqrt[n]{a_1a_2 \cdot a_n} \\
  AM(A) &= \frac{a_1 + a_2 + ... + a_n}{n} \\
- HM(A) &= \frac{n}{1/a_1 + 1/a_2 + ... + 1/a_n}
+ HM(a) &= \frac{n}{1/a_1 + 1/a_2 + ... + 1/a_n}
 \end{align*} 
 
-In the first part of the paper, we will prove the following inequality relating all three of the above means:
-
+In the first part of the paper, we will prove the following inequality relating all three of the above means: 
 % Daryas Part
 \begin{thm}
 For any $n$ positive numbers $a_1, a_2, ... a_n$: 
@@ -55,15 +54,19 @@ Suppose $a$ and $b$ are positive numbers. Then $(a-b)^2 \geq 0$. From here it fo
 			   &\iff \frac{a+b}{2} \geq \sqrt{ab}
 \end{align*}
 Hence the inequality holds for $n=2$.\\
-\textbf{Inductive Step:} Suppose $$\sqrt[n]{a_1 a_2 a_3 ... a_n} \leq \frac{a_1 + a_2 + ... + a_n}{n} \qquad (1)$$ holds for $n = 2^k$. We wish to show the inequality holds for $n = 2^{k+1} = 2 \cdot 2^k = 2n$. Let:
+\textbf{Inductive Step:} Suppose $$\frac{a_1 + a_2 + ... + a_n}{n} \geq \sqrt[n]{a_1 a_2 a_3 ... a_n} \qquad (1)$$ holds for $n = 2^k$. We wish to show the inequality holds for $n = 2^{k+1} = 2 \cdot 2^k = 2n$. Let:
 $$a_1 = \frac{b_1 + b_2}{2} \qquad a_2 = \frac{b_3 + b_4}{2} \qquad \ldots \qquad a_n = \frac{b_{2n-1} + b_{2n}}{2}$$
 where $b_1, b_2 ... b_{2n}$ are positive numbers. Next, we will substitute the above values into $(1)$. 
 \begin{align*}
-\frac{ (\frac{b_1 + b_2}{2} + \frac{b_3 + b_4}{2} + \ldots + \frac{b_{2n-1} + b_{2n}}{2}) } {n} &\geq \sqrt[n]{(\frac{b_1 + b_2}{2})\cdot(\frac{b_3 + b_4}{2})\cdots (\frac{b_{2n-1} + b_{2n}}{2})} \\&\iff
-\frac{b_1 + b_2 + b_3 + b_4 + \ldots + b_{2n-1} + b_{2n}}{2n}
-%\geq \sqrt[n]{(\frac{b_1 + b_2}{2})\cdot(\frac{b_3 + b_4}{2})\cdots (\frac{b_{2n-1} + b_{2n}}{2})}
+\frac{ (\frac{b_1 + b_2}{2} + \frac{b_3 + b_4}{2} + \ldots + \frac{b_{2n-1} + b_{2n}}{2}) } {n} \geq \sqrt[n]{(\frac{b_1 + b_2}{2})\cdot(\frac{b_3 + b_4}{2})\cdots (\frac{b_{2n-1} + b_{2n}}{2})} &\iff \\
+\frac{b_1 + b_2 + b_3 + b_4 + \ldots + b_{2n-1} + b_{2n}}{2n} \geq \sqrt[n]{(\frac{b_1 + b_2}{2}) \cdot (\frac{b_3 + b_4}{2}) \cdots (\frac{b_{2n-1} + b_{2n}}{2})}
 \end{align*}
-
+Next we apply the $n=2$ inequality to each of the terms on the right hand side of the inequality to get the following:
+\begin{align*}
+\frac{b_1 + b_2 + b_3 + b_4 + \ldots + b_{2n-1} + b_{2n}}{2n} \geq \sqrt[n]{(\sqrt{b_1b_2} \cdot \sqrt{b_3b_4} \cdots \sqrt{b_{2n-1}b_{2n}}} &\iff \\
+\frac{b_1 + b_2 + b_3 + b_4 + \ldots + b_{2n-1} + b_{2n}}{2n} \geq \sqrt[2n]{b_1b_2b_3b_4 \cdots b_{2n-1}b_{2n}}
+\end{align*}
+Hence we have just shown the inequality holds for $2n$, which means it holds for any power of $2^k$, $k = 1,2,3...$. 
 \end{flushleft}
 \end{proof}
 
@@ -71,7 +74,7 @@ where $b_1, b_2 ... b_{2n}$ are positive numbers. Next, we will substitute the a
 \begin{flushleft}
 \textit{Backwards Induction}
 \begin{proof}
-Now that we have established that the geometric and arithmetic ineqality holds for $n = 2^k$ we need to use a non-standard backwards induction to show that the inequality holds for all $n \in \mathbb{N}$.
+Now that we have established that the geometric and arithmetic inequality holds for $n = 2^k$ we need to use a non-standard backwards induction to show that the inequality holds for all $n \in \mathbb{N}$.
 \newline
 \newline
 $\boxed{\text{Base Case}}$ What we want to do is to assume that the following works for $n = 2^k$ and then prove that it works for $n - 1$. We can assume that the inequality holds for $n = 4$ lets prove that the inequality holds for $n = 3$. $$\sqrt[4]{a_1a_2a_3a_4} \leq \frac{a_1 + a_2 + a_3 + a_4}{4}$$ We apply a special trick to the inductive hypothesis by relabeling some of the $a$'s as follows: Let $a_1 = b_1, a_2 = b_1, a_3 = b_3$. Now we get the following inequality: $$\sqrt[4]{b_1b_2b_3a_4} \leq\frac{b_1 + b_2 + b_3 + a_4}{4}$$ Now from here we want to find an $a_4$ such that,
@@ -109,37 +112,16 @@ b_1b_2\cdots b_{n-1} \leq \big(\frac{b_1 + b_2 + \ldots + b_{n-1}}{n-1}\big)^{n-
 And thus, achieving the desired result.
 \end{proof}
 \end{flushleft}
-
-\section*{Harmonic and Geometric Inequality}
-\begin{thm}
-For any $n$ positive numbers $a_1, a_2, ... a_n$: 
-\begin{align*}
-\frac{n}{\frac{1}{a_1} + \ldots + \frac{1}{a_n}} \leq \sqrt[n]{a_1 \cdots a_n}
-\end{align*}
-Where the equality holds iff $a_1 = a_2 = ... = a_n$.
-\end{thm}
-
-\begin{proof}
-The proof the geometric-harmonic inequality follows from the geometric-arithmetic inequality. Notice that if we look at the recipricol of all $a_i$, that is, let $a_i = 1/t_i$ for $i = 1, \ldots, n$. Using the geometric-arithmetic inequality:
-\begin{align*}
-\sqrt[n]{a_1 \cdots a_n} \leq \frac{a_1 + \ldots + a_n}{n} &\iff
-\sqrt[n]{\frac{1}{t_1} \cdots \frac{1}{t_n}} \leq \frac{\frac{1}{t_1} + \ldots + \frac{1}{t_n}}{n} \\&\iff 
-\frac{1}{\sqrt[n]{t_1\cdots t_n}} \leq \frac{\frac{1}{t_1} + \ldots + \frac{1}{t_n}}{n} \\&\iff
-\sqrt[n]{t_1 \cdots t_n} \geq \frac{n}{\frac{1}{t_1} + \ldots + \frac{1}{t_n}}
-\end{align*}
-\end{proof}
-
-\section*{Tangential Triangle Problem}
 Now what we would like to do is apply the harmonic, geometric, and arithmetic inequality to the tangetial triangle problem which was proposed in 1941 by Erdos and Gallai.
 \begin{thm}
 Let $f(x)$ be a real polynomial of degree $n\geq 2$ with only real roots, such that $f(x)>0$ for $-1<x<1$ and $f(-1) = f(1) = 0$. Then $$\frac{2}{3}T \leq A \leq \frac{2}{3}R,$$ and equality holds in both cases only for $n = 2$.
 \end{thm}
 \begin{figure}[H]
 \centering
-\frame{\includegraphics{tangential.PNG}}
+%\frame{\includegraphics{tangential.PNG}}
 \caption{Example figure for $f(x) = (1 - x^2) (2 - x) (2 + x)$ where $T$ is the area of the tangential triangle, $A$ is the area under $f$, $l_1$ and $l_2$ are the tangent lines at $x = \pm 1$.}
 \end{figure}
-\subsection*{Steps to Construct the Tangential Triangle}
+\section*{Steps to Construct the Tangential Triangle}
 To contruct the Tangential triangle we need to find the equation of the tangent line going through $x = \pm 1$ of $f$. We can do this by using some basic concepts from algebra. Using slope intercept form we get that:
 \begin{align*}
 \left\{ \begin{array}{lr} l_1 := y_1 = f'(-1)(x+1) \\ l_2 := y_2 = f'(1)(x-1).\end{array} \right.
@@ -152,35 +134,10 @@ And therefore,
 \begin{align*}
 y_0 = f'(1) \Big(\frac{f'(-1)+ f'(1)}{f'(1) - f'(-1)} - 1\Big) &\iff
 y_0 = f'(1) \Big(\frac{f'(1) + f'(-1) - (f'(1) - f'(-1))}{f'(1)-f'(-1)}\Big) \\&\iff
-y_0 = f'(1)\Big(\frac{2f'(-1)}{f'(1)-f'(-1)}\Big) =T.
+y_0 = f'(1)\Big(\frac{2f'(-1)}{f'(1)-f'(-1)}\Big)
 \end{align*}
 
 \begin{proof}
-We can rewrite $f(x) = (1-x^2) \prod_{i}(\alpha_i - x) \prod_{j}(\beta_j + x)$ since $f$ has real roots and $f(x) > 0$ for $x \in (-1, 1)$ for some $\alpha_{i}$ and $\beta_{j}$ that are both greater than or equal to 1. Therefore,
-\begin{align*}
-A = \int_{-1}^{1} (1-x^2) \prod_{i}(\alpha_i - x) \prod_{j}(\beta_j + x) dx \qquad (\textbf{*})
-\end{align*}
-Since changing $x$ to $-x$ does not change the area of $A$ we can rewrite \textbf{*} as follows:
-\begin{align*}
-A &= \int_{-1}^{1} \frac{1}{2} \big[  (1-x^2) \prod_{i}(\alpha_i - x) \prod_{j}(\beta_j + x) + (1-x^2) \prod_{i}(\alpha_i + x) \prod_{j}(\beta_j - x)\big] dx \\&= \int_{-1}^{1} \frac{1}{2}(1-x^2) \big[ \underbrace{\prod_{i}(\alpha_i - x) \prod_{j}(\beta_j + x)}_{\rho} + \underbrace{\prod_{i}(\alpha_i + x) \prod_{j}(\beta_j - x)}_{\gamma} \big] dx \\&= \int_{-1}^{1} \frac{\rho + \gamma}{2}(1-x^2) dx \\&\geq \int_{-1}^{1} (1-x^2)\sqrt{\rho\gamma} dx \qquad (\text{Using the Geometric-Arithmetic Inequality}) \\&= \int_{-1}^{1} (1-x^2)\sqrt{\prod_{i}(\alpha_i - x) \prod_{j}(\beta_j + x)\prod_{i}(\alpha_i + x) \prod_{j}(\beta_j - x)} dx \\&= \int_{-1}^{1} (1-x^2) \sqrt{\prod_{i} (\alpha_i^2 - x^2)\prod_{j} (\beta_{j}^2 - x^2)} dx \\&\geq \int_{-1}^{1} (1-x^2) \sqrt{\prod_{i} (\alpha_i^2 - 1)\prod_{j} (\beta_{j}^2 - 1)} dx \\&= \frac{4}{3}\sqrt{\prod_{i}(\alpha_i^2 - 1)(\prod_{j} \beta_j^2-1)} dx
-\end{align*} 
-Now to compute $f'(-1)$ and $f'(1)$.
-\begin{align*}
-f'(x) &= -2x \prod_{i} (\alpha_i - x) \prod_{j} (\beta_j + x)
-\end{align*}
-Hence,
-\begin{align*}
-\left\{ \begin{array}{lr} f(-1) = 2\prod_{i}(\alpha_i + 1)\prod_{j}(\beta_j - 1) \\
-f(1) = -2\prod_{i}(\alpha_i - 1)\prod_{j}(\beta_j + 1)
-\end{array} \right.
-\end{align*}
-Therefore,
-\begin{align*}
-A &\geq \frac{4}{3}\big(\prod_{i}(\alpha_i^2 - 1)\prod_{j}(\beta_j^2 - 1)\big)^{1/2} \\&= \frac{4}{3} \big( -\frac{f'(-1)f'(1)}{4} \big)^{1/2} \\&= \frac{2}{3}\big(-f'(1)f'(-1)\big)^{1/2}.
-\end{align*}
-Ultimately,
-\begin{align*}
-A &\geq \frac{2}{3} \frac{2}{-\frac{1}{f'(1)} + \frac{1}{f'(-1)}} \qquad (\text{Harmonic-Geometric Inequality}) \\&= \frac{2}{3}\Big(2\frac{f'(-1)f'(1)}{f'(1)-f'(-1)}\Big) = \frac{2}{3}T.
-\end{align*}
+We can rewrite $f(x) = (1-x^2) \prod_{i}(\alpha_i - x) \prod_{j}(\beta_j - x)$ since $f$ has real roots and $f(x) \neq 0$ for $x \in (-1, 1)$ for some $\alpha_{i}$ and $\beta_{j}$ that are both greater than or equal to 1.
 \end{proof}
 \end{document}
